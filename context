@@ -1,0 +1,31 @@
+*ZOHO INTERVIEW QUESTION L3*
+  
+I have given a program that behaves like Transcation query language from sql
+the query are:
+  --> SET - sets the variable to the value (ex: SET a 20)
+  --> UNSET - sets the variable to the null value (ex: UNSET a)
+  --> GET - fetchs the variable value (ex: GET a)
+  --> UPDATE - updates the variable value (ex: UPDATE a 20)
+  --> COUNT - count the variable value (ex: COUNT 10)
+  --> BEGIN - begins a new transaction (ex: BEGIN)
+  --> ROLLBACK - rollbacks whatever transaction command is given [before last commit/rollback] (ex: ROLLBACK)
+
+:: My methods involves using 'class data structure' to hold the data of each flow of commands and creating an 'vector of object of the class'
+  the each object in the vector contains the data of the flow (objects)
+
+:: i use two index variables i and j, these variable are used to keep track of certain parameters;
+    --> i is used to fetch the end index of my vector
+    --> j is used to avoid the rollback even if the object query is commited
+
+:: at the begin of my program i initiate the program by pushing a object into the vector,
+   the changes will be made in this object data,
+   if this changes is not commited then there is a possibility of rolling it back,
+   so only if i get the COMMIT command from the user, i will push a copy of my object into my vector.
+   if i get ROLLBACK command i must check whether the previous queries have been commited;
+    -->if so i will throw an statement "the queries as been committed"
+    -->if not i will rollback by poping the end of my vector
+
+:: this is the basic apporach using class and objects. i have not optimized the count function in this program. this solution is not the best 
+   but it gives the gist of how to approach a program with a rollback facility.
+
+!HAPPY LEARNING!
